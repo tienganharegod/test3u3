@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đề Thi Thử Unit 2 - Test 01 (Humans and the Environment) - Ms Lê Hằng English</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #8854C0;
+      --secondary: #FDCB6E;
+      --accent: #00C9A7;
+      --success: #00D26A;
+      --danger: #FF4757;
+      --bg-card: #FFFFFF;
+      --text-main: #2D3436;
+      --border-color: #E2E8F0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      font-family: 'Nunito', 'Quicksand', sans-serif;
+      min-height: 100vh;
+      color: var(--text-main);
+      background: linear-gradient(-45deg, #8854C0, #FDCB6E, #00C9A7, #a8c0ff, #fed6e3);
+      background-size: 400% 400%;
+      animation: gradientBG 12s ease infinite;
+      position: relative;
+      overflow-x: hidden;
+      padding-bottom: 120px;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .bg-pattern { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden; }
+    .floating-item { position: absolute; opacity: 0.45; animation: floatAround 10s infinite ease-in-out alternate; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.08)); }
+    @keyframes floatAround {
+      0% { transform: translateY(0) translateX(0) rotate(0deg) scale(0.95); }
+      50% { transform: translateY(-30px) translateX(15px) rotate(15deg) scale(1.08); }
+      100% { transform: translateY(20px) translateX(-15px) rotate(-15deg) scale(0.95); }
+    }
+
+    .bottom-railway { position: fixed; bottom: 0; left: 0; width: 100%; height: 44px; background: #2C3E50; border-top: 5px solid #27AE60; z-index: 9; display: flex; align-items: center; overflow: hidden; box-shadow: 0 -4px 15px rgba(0,0,0,0.15); }
+    .railway-lines { width: 200%; height: 6px; background: repeating-linear-gradient(90deg, #FFFFFF, #FFFFFF 30px, transparent 30px, transparent 60px); animation: moveRoad 3s linear infinite; }
+    @keyframes moveRoad { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .animated-train { position: fixed; bottom: 10px; left: -150px; font-size: 28px; z-index: 10; animation: driveTrain 18s linear infinite; }
+    @keyframes driveTrain { 0% { left: -120px; } 100% { left: 105vw; } }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 14px 16px 50px; position: relative; z-index: 10; }
+
+    .top-progress-bar { position: sticky; top: 10px; z-index: 100; background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(12px); padding: 10px 18px; border-radius: 50px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 14px; margin-bottom: 16px; border: 2px solid #FFF; }
+    .score-badge { display: flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 30px; font-weight: 800; font-size: 15px; color: #FFF; white-space: nowrap; }
+    .badge-star { background: linear-gradient(135deg, #FF6B8B, #FF8E53); }
+    .badge-check { background: linear-gradient(135deg, #00D26A, #00B894); }
+    .progress-track { flex: 1; height: 16px; background: #E2E8F0; border-radius: 20px; overflow: hidden; border: 2px solid #FFF; }
+    .progress-fill { width: 0%; height: 100%; background: linear-gradient(90deg, #FDCB6E, #00C9A7, #00D26A); border-radius: 20px; transition: width 0.4s ease; }
+
+    .warning-banner { background: linear-gradient(135deg, #FFF0F2 0%, #FFF5EB 100%); border: 2px solid #FF7675; border-left: 8px solid #FF4757; border-radius: 18px; padding: 14px 18px; margin-bottom: 20px; box-shadow: 0 6px 16px rgba(255, 71, 87, 0.15); }
+    .warning-title { color: #D63031; font-weight: 900; font-size: 15px; display: flex; align-items: center; gap: 8px; margin-bottom: 6px; text-transform: uppercase; }
+    .warning-text { color: #4A4A4A; font-size: 14.5px; line-height: 1.55; font-weight: 600; }
+    .warning-highlight { color: #C0392B; font-weight: 800; }
+
+    .hero-card { background: #FFFFFF; border-radius: 26px; padding: 22px 26px; box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08); margin-bottom: 22px; display: flex; align-items: center; justify-content: space-between; border: 3px solid #F0F3F8; }
+    .hero-tag { display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(135deg, #0984E3, #00CEC9); color: #FFF; padding: 4px 12px; border-radius: 20px; font-size: 12.5px; font-weight: 800; margin-bottom: 8px; }
+    .hero-title { font-size: 25px; font-weight: 900; background: linear-gradient(135deg, #0984E3, #6C5CE7, #E84393); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 6px; }
+    .hero-sub { color: #636E72; font-size: 13.5px; font-weight: 700; margin-bottom: 10px; }
+    .hero-teacher-pill { display: inline-flex; align-items: center; gap: 6px; background: #F8E7F6; color: #8854C0; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 800; border: 1.5px solid #E8C6EF; }
+
+    .section-badge-card { background: linear-gradient(135deg, #6C5CE7, #8854C0); color: #FFF; border-radius: 18px; padding: 12px 18px; margin: 28px 0 16px; font-weight: 900; font-size: 16px; display: flex; align-items: center; gap: 10px; box-shadow: 0 6px 16px rgba(108, 92, 231, 0.25); border: 2px solid rgba(255,255,255,0.4); }
+
+    .question-card { background: var(--bg-card); border-radius: 24px; padding: 22px; margin-bottom: 22px; box-shadow: 0 10px 25px rgba(0,0,0,0.07); border: 2.5px solid #EDF2F7; }
+    .q-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+    .q-number-pill { background: #8854C0; color: #FFF; font-weight: 900; padding: 4px 14px; border-radius: 14px; font-size: 13px; box-shadow: 0 3px 0 #5E358A; }
+    .q-type-pill { background: #E8F0FE; color: #1A73E8; font-weight: 700; padding: 4px 12px; border-radius: 12px; font-size: 12px; }
+    .q-text { font-size: 16px; font-weight: 700; color: #2D3436; line-height: 1.55; margin-bottom: 16px; }
+
+    .options-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 14px; }
+    @media (min-width: 620px) { .options-grid { grid-template-columns: 1fr 1fr; } }
+
+    .option-btn { position: relative; display: flex; align-items: center; gap: 12px; padding: 13px 16px; background: #FFFFFF; border: 2px solid var(--border-color); border-bottom: 5px solid #CBD5E1; border-radius: 18px; cursor: pointer; font-size: 15px; font-weight: 700; color: #2D3436; text-align: left; transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease; width: 100%; }
+    .option-btn:hover:not(.disabled) { transform: scale(1.02) translateY(-2px); border-color: #8854C0; background: #FDFBFF; }
+    .option-btn:active:not(.disabled) { transform: translateY(2px); border-bottom-width: 2px; }
+    .opt-letter { width: 32px; height: 32px; border-radius: 10px; background: #F1F2F6; display: flex; align-items: center; justify-content: center; font-weight: 900; color: #57606F; flex-shrink: 0; font-size: 14px; }
+
+    .option-btn.correct {
+      background: #EAFDF3 !important;
+      border-color: #00D26A !important;
+      border-bottom: 5px solid #00A352 !important;
+      color: #005A2B !important;
+      font-weight: 900 !important;
+    }
+    .option-btn.correct .opt-letter { background: #00D26A !important; color: #FFF !important; }
+    .option-btn.correct .opt-text { font-weight: 900 !important; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+
+    .option-btn.highlight-correct-answer {
+      background: #D3F9E3 !important;
+      border: 2.5px solid #00D26A !important;
+      border-bottom: 5px solid #008F47 !important;
+      color: #004D25 !important;
+      font-weight: 900 !important;
+      box-shadow: 0 0 15px rgba(0, 210, 106, 0.45) !important;
+      transform: scale(1.02);
+      opacity: 1 !important;
+    }
+    .option-btn.highlight-correct-answer .opt-letter { background: #00D26A !important; color: #FFF !important; }
+    .option-btn.highlight-correct-answer .opt-text { font-weight: 900 !important; }
+    .option-btn.highlight-correct-answer::after {
+      content: "✓ ĐÁP ÁN ĐÚNG";
+      margin-left: auto;
+      background: #00D26A;
+      color: #FFF;
+      font-size: 11px;
+      font-weight: 900;
+      padding: 3px 8px;
+      border-radius: 8px;
+      white-space: nowrap;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.12);
+    }
+
+    .option-btn.wrong {
+      background: #FFF1F2 !important;
+      border-color: #FF4757 !important;
+      border-bottom: 5px solid #D63031 !important;
+      color: #C0392B !important;
+      animation: shake 0.45s ease;
+    }
+    .option-btn.wrong .opt-letter { background: #FF4757; color: #FFF; }
+    .option-btn.disabled { cursor: default; opacity: 0.85; }
+
+    @keyframes shake { 0%, 100% { transform: translateX(0); } 20% { transform: translateX(-8px); } 40% { transform: translateX(8px); } 60% { transform: translateX(-6px); } 80% { transform: translateX(6px); } }
+
+    .explanation-box { display: none; background: #FAFBFF; border: 2px dashed #8854C0; border-radius: 20px; padding: 18px 20px; margin-top: 16px; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    .exp-title { color: #FF4757; font-size: 16px; font-weight: 900; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.4px; }
+    .translation-bar { background: #FFF8E7; border-left: 5px solid #FDCB6E; border-radius: 12px; padding: 10px 14px; color: #2D3436; font-size: 14.5px; font-weight: 700; margin-bottom: 14px; line-height: 1.5; }
+    .step-label { font-size: 14.5px; font-weight: 800; color: #2D3436; margin-bottom: 8px; }
+    .exp-grid { display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 14px; }
+    @media (min-width: 600px) { .exp-grid { grid-template-columns: 1fr 1fr; } }
+    .exp-item-card { background: #FFFFFF; border: 1.5px solid #E2E8F0; border-radius: 12px; padding: 9px 12px; font-size: 13.5px; line-height: 1.45; }
+    .opt-name { font-weight: 800; color: #0984E3; margin-right: 5px; }
+    .badge-pill { display: inline-block; font-size: 11px; font-weight: 800; padding: 2px 7px; border-radius: 6px; margin-right: 5px; }
+    .badge-pill.bad { background: #FFE8E6; color: #FF4757; }
+    .badge-pill.good { background: #E3FAEC; color: #00B894; }
+    .why-correct-box { background: #F0FFF4; border: 1.5px solid #C6F6D5; border-radius: 14px; padding: 11px 15px; margin-bottom: 10px; color: #22543D; font-size: 14px; line-height: 1.55; font-weight: 600; }
+    .why-wrong-box { background: #FFF5F5; border: 1.5px solid #FED7D7; border-radius: 14px; padding: 11px 15px; color: #742A2A; font-size: 14px; line-height: 1.55; font-weight: 600; }
+    .highlight-rule { background: #FEFCBF; color: #744210; padding: 2px 8px; border-radius: 6px; font-weight: 800; }
+    .highlight-target { color: #00A352; font-weight: 800; }
+
+    .submit-bar { text-align: center; margin-top: 36px; }
+    .btn-submit { background: linear-gradient(135deg, #FF6B8B, #FF8E53); color: #FFF; border: none; border-bottom: 6px solid #D63031; border-radius: 25px; padding: 16px 42px; font-size: 19px; font-weight: 900; cursor: pointer; box-shadow: 0 10px 25px rgba(255, 107, 139, 0.35); display: inline-flex; align-items: center; gap: 10px; transition: transform 0.2s; }
+    .btn-submit:hover { transform: scale(1.03) translateY(-2px); }
+
+    .promo-banner { background: linear-gradient(135deg, #D63031 0%, #E84393 50%, #0984E3 100%); border-radius: 22px; padding: 22px 24px; color: #FFF; box-shadow: 0 10px 25px rgba(232, 67, 147, 0.25); margin-top: 36px; text-align: center; border: 2px solid rgba(255,255,255,0.4); }
+    .promo-title { font-size: 17px; font-weight: 900; margin-bottom: 10px; line-height: 1.5; }
+    .promo-phone-pill { display: inline-flex; align-items: center; gap: 8px; background: #FFFFFF; color: #D63031; padding: 8px 22px; border-radius: 25px; font-weight: 900; font-size: 18px; margin: 4px 0 10px; }
+    .promo-sub { font-size: 14.5px; font-weight: 700; }
+
+    .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(8px); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+    .modal-card { background: #FFFFFF; width: 100%; max-width: 520px; border-radius: 28px; padding: 32px 26px; text-align: center; border: 4px solid #FDCB6E; }
+    .modal-score { font-size: 40px; font-weight: 900; color: #8854C0; margin-bottom: 6px; }
+    .modal-feedback { background: #F8F9FA; border-left: 5px solid #8854C0; border-radius: 14px; padding: 16px; margin: 18px 0; font-size: 15px; line-height: 1.55; color: #2D3436; font-weight: 700; text-align: left; }
+    .btn-retry { background: linear-gradient(135deg, #00C9A7, #00B894); color: #FFF; border: none; border-bottom: 5px solid #008f72; border-radius: 20px; padding: 14px 34px; font-size: 17px; font-weight: 800; cursor: pointer; }
+    #confetti-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 999; }
+  </style>
+</head>
+<body>
+
+  <!-- HỌA TIẾT SVG LƠ LỬNG VUI NHỘN -->
+  <div class="bg-pattern">
+    <svg class="floating-item" style="top: 6%; left: 4%; width: 46px; height: 46px;" viewBox="0 0 24 24" fill="#FDCB6E"><path d="M12 1.5l3.09 6.26L22 8.77l-5 4.87 1.18 6.86L12 17.27l-6.18 3.23L7 13.64l-5-4.87 6.91-1.01L12 1.5z"/></svg>
+    <svg class="floating-item" style="top: 18%; right: 6%; width: 50px; height: 50px; animation-duration: 13s;" viewBox="0 0 24 24" fill="#FF7675"><circle cx="12" cy="12" r="4" fill="#FDCB6E"/><circle cx="12" cy="5" r="3.5" fill="#FF7675"/><circle cx="19" cy="12" r="3.5" fill="#FF7675"/><circle cx="12" cy="19" r="3.5" fill="#FF7675"/><circle cx="5" cy="12" r="3.5" fill="#FF7675"/></svg>
+    <svg class="floating-item" style="top: 38%; left: 3%; width: 65px; height: 42px; animation-duration: 16s;" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
+    <svg class="floating-item" style="top: 58%; right: 5%; width: 52px; height: 52px; animation-duration: 11s;" viewBox="0 0 24 24" fill="#FFF"><path d="M12 3c-4.97 0-9 3.58-9 8 0 2.45 1.25 4.67 3.23 6.13L5 21l4.47-1.49C10.27 19.8 11.12 20 12 20c4.97 0 9-3.58 9-8s-4.03-9-9-9zm-3 8a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm6 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg>
+    <svg class="floating-item" style="top: 78%; left: 5%; width: 45px; height: 45px; animation-duration: 14s;" viewBox="0 0 24 24" fill="#FF4757"><path d="M12 3C8 3 4 7 4 12c0 4.5 4 9 8 9s8-4.5 8-9c0-5-4-9-8-9zm-1-1h2v2h-2V2z"/></svg>
+  </div>
+
+  <div class="bottom-railway"><div class="railway-lines"></div></div>
+  <div class="animated-train">🚇 🚃 🚃</div>
+  <canvas id="confetti-canvas"></canvas>
+
+  <div class="container">
+
+    <div class="top-progress-bar">
+      <div class="score-badge badge-star"><span>⭐</span><span id="starCounter">0</span>/40</div>
+      <div class="progress-track"><div id="progressBarFill" class="progress-fill"></div></div>
+      <div class="score-badge badge-check"><span>✅</span><span id="correctCounter">0</span>/40</div>
+    </div>
+
+    <div class="warning-banner">
+      <div class="warning-title"><span>⚠️</span> LỜI NHẮC CỰC KỲ QUAN TRỌNG <span>⚠️</span></div>
+      <div class="warning-text">
+        Chỉ có <span class="warning-highlight">đọc kỹ giải thích ngay sau mỗi câu</span>, sau đó ghi lại từ vựng/cấu trúc mới vào vở để học thì mới thực sự giỏi lên. Làm cho xong mà không đọc giải thích hay đọc qua loa không ghi chép thì chỉ tốn thời gian vô ích!
+        <br><strong>Kéo tới đâu, làm tới đó! *</strong>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div>
+        <div class="hero-tag"><span>🌟</span> LUYỆN THI THPT QUỐC GIA · UNIT 2: HUMANS AND THE ENVIRONMENT</div>
+        <h1 class="hero-title">Đề Thi Thử Unit 2 - Test 01 (40 Câu)</h1>
+        <div class="hero-sub">Clean & Green Friday · Rethink Reuse Restore · Illegal Hunting · A Delicate Balance · Land Pollution</div>
+        <div class="hero-teacher-pill"><span>👩‍🏫</span> Giáo viên tạo: Ms Lê Hằng English</div>
+      </div>
+    </div>
+
+    <!-- TOÀN BỘ 40 CÂU HỎI ĐƯỢC NHÚNG TĨNH TRỰC TIẾP TRONG HTML (KHÔNG DÙNG JS TẠO THẺ) -->
+    <div id="questionsContainer">
+
+      <!-- PART 1: LET'S MAKE OUR SCHOOL GREENER (Q1 - Q6) -->
+      <div class="section-badge-card"><span>🌱</span><div><div>PART 1: ADVERTISEMENT CLOZE (QUESTIONS 1 - 6)</div><div style="font-size: 13px; font-weight: 600;">Let's Make Our School Greener – Together!</div></div></div>
+
+      <!-- Q1 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 1</span><span class="q-type-pill">REDUCED RELATIVE CLAUSE</span></div>
+        <div class="q-text">Ngữ cảnh: "Join our 'Clean & Green Friday' campaign, (1) __________ students interested in protecting the environment."</div>
+        <div class="options-grid" id="optgrid_1">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(1, false, this)"><div class="opt-letter">A</div><div class="opt-text">organizing</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(1, true, this)"><div class="opt-letter">B</div><div class="opt-text">organized by</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(1, false, this)"><div class="opt-letter">C</div><div class="opt-text">to organize</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(1, false, this)"><div class="opt-letter">D</div><div class="opt-text">that is organized</div></button>
+        </div>
+        <div class="explanation-box" id="exp_1">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="translation-bar">💬 <strong>Bước 1 - Dịch câu:</strong> Hãy tham gia chiến dịch "Thứ Sáu Xanh & Sạch" của chúng tôi, được tổ chức bởi (organized by) những học sinh quan tâm đến việc bảo vệ môi trường.</div>
+          <div class="step-label">Bước 2 - Phân tích 4 đáp án:</div>
+          <div class="exp-grid">
+            <div class="exp-item-card"><span class="opt-name">organizing:</span><span class="badge-pill bad">Sai</span>dạng chủ động V-ing</div>
+            <div class="exp-item-card"><span class="opt-name">organized by:</span><span class="badge-pill good">Đúng</span>rút gọn MĐQH bị động (which is organized by)</div>
+            <div class="exp-item-card"><span class="opt-name">to organize:</span><span class="badge-pill bad">Sai</span>chỉ mục đích</div>
+            <div class="exp-item-card"><span class="opt-name">that is organized:</span><span class="badge-pill bad">Sai</span>không dùng "that" sau dấu phẩy và thiếu giới từ "by" trước tác nhân "students"</div>
+          </div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> <span class="highlight-rule">Rút gọn MĐQH bị động:</span> Chiến dịch ("campaign") được tổ chức bởi học sinh ("students") -> rút gọn "which is organized by" thành <span class="highlight-target">organized by</span>.</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> A, C mang nghĩa chủ động; D vừa sai đại từ "that" sau dấu phẩy vừa thiếu "by".</div>
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 2</span><span class="q-type-pill">PREPOSITION</span></div>
+        <div class="q-text">Ngữ cảnh: "You can help (2) __________ picking up trash, recycling plastic bottles, or planting small trees in the garden."</div>
+        <div class="options-grid" id="optgrid_2">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(2, false, this)"><div class="opt-letter">A</div><div class="opt-text">to</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(2, false, this)"><div class="opt-letter">B</div><div class="opt-text">for</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(2, false, this)"><div class="opt-letter">C</div><div class="opt-text">at</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(2, true, this)"><div class="opt-letter">D</div><div class="opt-text">by</div></button>
+        </div>
+        <div class="explanation-box" id="exp_2">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="translation-bar">💬 <strong>Bước 1 - Dịch câu:</strong> Bạn có thể giúp đỡ bằng cách (by) nhặt rác, tái chế chai nhựa hoặc trồng cây nhỏ trong vườn.</div>
+          <div class="step-label">Bước 2 - Phân tích 4 đáp án:</div>
+          <div class="exp-grid">
+            <div class="exp-item-card"><span class="opt-name">to / for / at:</span><span class="badge-pill bad">Sai</span>không chỉ phương thức hành động</div>
+            <div class="exp-item-card"><span class="opt-name">by (prep):</span><span class="badge-pill good">Đúng</span>by + V-ing (bằng cách làm gì)</div>
+          </div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> <span class="highlight-rule">Cấu trúc By + V-ing:</span> Diễn tả phương pháp/cách thức thực hiện hành động: <span class="highlight-target">by picking up trash...</span> (bằng việc nhặt rác...).</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> to, for, at không mang nghĩa "bằng cách" khi đứng trước chuỗi hành động V-ing này.</div>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 3</span><span class="q-type-pill">WORD FORM (ADJ)</span></div>
+        <div class="q-text">Ngữ cảnh: "There are (3) __________ areas behind the canteen and near the library that need cleaning regularly."</div>
+        <div class="options-grid" id="optgrid_3">
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(3, true, this)"><div class="opt-letter">A</div><div class="opt-text">specific</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(3, false, this)"><div class="opt-letter">B</div><div class="opt-text">specification</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(3, false, this)"><div class="opt-letter">C</div><div class="opt-text">specified</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(3, false, this)"><div class="opt-letter">D</div><div class="opt-text">specifying</div></button>
+        </div>
+        <div class="explanation-box" id="exp_3">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="translation-bar">💬 <strong>Bước 1 - Dịch câu:</strong> Có những khu vực cụ thể (specific areas) phía sau căng tin và gần thư viện cần được dọn dẹp thường xuyên.</div>
+          <div class="step-label">Bước 2 - Phân tích 4 đáp án:</div>
+          <div class="exp-grid">
+            <div class="exp-item-card"><span class="opt-name">specific (adj):</span><span class="badge-pill good">Đúng</span>cụ thể, nhất định (specific areas)</div>
+            <div class="exp-item-card"><span class="opt-name">specification (n):</span><span class="badge-pill bad">Danh từ</span>thông số kỹ thuật</div>
+            <div class="exp-item-card"><span class="opt-name">specified / specifying:</span><span class="badge-pill bad">Động từ phân từ</span>được chỉ định theo hợp đồng</div>
+          </div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> <span class="highlight-rule">Tính từ bổ nghĩa cho danh từ:</span> Đứng trước danh từ "areas" cần tính từ miêu tả: <span class="highlight-target">specific areas</span> (những khu vực cụ thể).</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> B là danh từ; C và D không tự nhiên trong văn cảnh miêu tả khu vực sân trường.</div>
+        </div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 4</span><span class="q-type-pill">WORD ORDER</span></div>
+        <div class="q-text">Ngữ cảnh: "Throwing waste into bins, reusing old materials, and (4) __________ are just a few ways to reduce pollution."</div>
+        <div class="options-grid" id="optgrid_4">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(4, false, this)"><div class="opt-letter">A</div><div class="opt-text">single-use avoiding plastic</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(4, false, this)"><div class="opt-letter">B</div><div class="opt-text">avoiding use-single plastic</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(4, false, this)"><div class="opt-letter">C</div><div class="opt-text">plastic use-single avoiding</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(4, true, this)"><div class="opt-letter">D</div><div class="opt-text">avoiding single-use plastic</div></button>
+        </div>
+        <div class="explanation-box" id="exp_4">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="translation-bar">💬 <strong>Bước 1 - Dịch câu:</strong> Vứt rác vào thùng, tái sử dụng vật liệu cũ, và tránh dùng nhựa một lần (avoiding single-use plastic) chỉ là một vài cách để giảm ô nhiễm.</div>
+          <div class="step-label">Bước 2 - Phân tích 4 đáp án:</div>
+          <div class="exp-grid">
+            <div class="exp-item-card"><span class="opt-name">A, B, C:</span><span class="badge-pill bad">Sai trật tự</span>đặt sai vị trí V-ing hoặc viết ngược "use-single"</div>
+            <div class="exp-item-card"><span class="opt-name">avoiding single-use plastic:</span><span class="badge-pill good">Đúng</span>V-ing (avoiding) + tính từ ghép (single-use) + danh từ (plastic)</div>
+          </div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> <span class="highlight-rule">Cấu trúc song hành (Parallelism):</span> Song hành với "Throwing waste..., reusing old materials, and..." là cụm Danh động từ V-ing + Tân ngữ: <span class="highlight-target">avoiding single-use plastic</span>.</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> A, B, C sắp xếp sai vị trí động từ và viết sai tính từ ghép "single-use".</div>
+        </div>
+      </div>
+
+      <!-- Q5 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 5</span><span class="q-type-pill">GERUND AS SUBJECT</span></div>
+        <div class="q-text">Ngữ cảnh: "We believe that (5) __________ the environment clean is not just a duty but also a shared joy."</div>
+        <div class="options-grid" id="optgrid_5">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(5, false, this)"><div class="opt-letter">A</div><div class="opt-text">keep</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(5, false, this)"><div class="opt-letter">B</div><div class="opt-text">to keep</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(5, true, this)"><div class="opt-letter">C</div><div class="opt-text">keeping</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(5, false, this)"><div class="opt-letter">D</div><div class="opt-text">to keeping</div></button>
+        </div>
+        <div class="explanation-box" id="exp_5">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="translation-bar">💬 <strong>Bước 1 - Dịch câu:</strong> Chúng tôi tin rằng việc giữ cho môi trường sạch sẽ (keeping the environment clean) không chỉ là nghĩa vụ mà còn là niềm vui chung.</div>
+          <div class="step-label">Bước 2 - Phân tích 4 đáp án:</div>
+          <div class="exp-grid">
+            <div class="exp-item-card"><span class="opt-name">keep:</span><span class="badge-pill bad">Sai</span>động từ nguyên mẫu không làm chủ ngữ</div>
+            <div class="exp-item-card"><span class="opt-name">keeping (V-ing):</span><span class="badge-pill good">Đúng</span>Danh động từ (Gerund) đóng vai trò làm chủ ngữ của mệnh đề sau "that"</div>
+            <div class="exp-item-card"><span class="opt-name">to keeping:</span><span class="badge-pill bad">Sai</span>thừa to</div>
+          </div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> <span class="highlight-rule">Danh động từ làm chủ ngữ (Gerund as Subject):</span> Đứng đầu mệnh đề danh từ sau "believe that" và làm chủ ngữ cho động từ to be "is" là Danh động từ V-ing: <span class="highlight-target">keeping</span>.</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> A không làm chủ ngữ; D sai ngữ pháp.</div>
+        </div>
+      </div>
+
+      <!-- Q6 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 6</span><span class="q-type-pill">PHRASAL VERB</span></div>
+        <div class="q-text">Ngữ cảnh: "Let's (6) __________ our small efforts into something big!"</div>
+        <div class="options-grid" id="optgrid_6">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(6, false, this)"><div class="opt-letter">A</div><div class="opt-text">make</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(6, false, this)"><div class="opt-letter">B</div><div class="opt-text">bump</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(6, true, this)"><div class="opt-letter">C</div><div class="opt-text">turn</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(6, false, this)"><div class="opt-letter">D</div><div class="opt-text">take</div></button>
+        </div>
+        <div class="explanation-box" id="exp_6">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="translation-bar">💬 <strong>Bước 1 - Dịch câu:</strong> Hãy cùng biến những nỗ lực nhỏ bé của chúng ta thành (turn ... into) một điều gì đó thật lớn lao!</div>
+          <div class="step-label">Bước 2 - Phân tích 4 đáp án:</div>
+          <div class="exp-grid">
+            <div class="exp-item-card"><span class="opt-name">make / take:</span><span class="badge-pill bad">Sai</span>không đi với cấu trúc "... efforts into something" theo nghĩa biến đổi</div>
+            <div class="exp-item-card"><span class="opt-name">bump (into):</span><span class="badge-pill bad">Sai</span>tình cờ bắt gặp ai</div>
+            <div class="exp-item-card"><span class="opt-name">turn (into):</span><span class="badge-pill good">Đúng</span>turn A into B: biến đổi A thành B</div>
+          </div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> <span class="highlight-rule">Cụm động từ:</span> <span class="highlight-target">turn something into something</span> nghĩa là biến cái gì thành cái gì.</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> bump into nghĩa là va phải hoặc tình cờ gặp ai; make và take không hợp nghĩa.</div>
+        </div>
+      </div>
+
+      <!-- PART 2: RETHINK. REUSE. RESTORE. (Q7 - Q12) -->
+      <div class="section-badge-card"><span>♻️</span><div><div>PART 2: LEAFLET CLOZE (QUESTIONS 7 - 12)</div><div style="font-size: 13px; font-weight: 600;">Rethink. Reuse. Restore. – Your Environment. Your Choice.</div></div></div>
+
+      <!-- Q7 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 7</span><span class="q-type-pill">QUANTIFIER</span></div>
+        <div class="q-text">Ngữ cảnh: "A huge (7) __________ of plastic and chemical waste is damaging nature."</div>
+        <div class="options-grid" id="optgrid_7">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(7, false, this)"><div class="opt-letter">A</div><div class="opt-text">pile</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(7, true, this)"><div class="opt-letter">B</div><div class="opt-text">amount</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(7, false, this)"><div class="opt-letter">C</div><div class="opt-text">volume</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(7, false, this)"><div class="opt-letter">D</div><div class="opt-text">number</div></button>
+        </div>
+        <div class="explanation-box" id="exp_7">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="translation-bar">💬 <strong>Bước 1 - Dịch câu:</strong> Một lượng khổng lồ (A huge amount of) rác thải nhựa và hóa chất đang hủy hoại thiên nhiên.</div>
+          <div class="step-label">Bước 2 - Phân tích 4 đáp án:</div>
+          <div class="exp-grid">
+            <div class="exp-item-card"><span class="opt-name">pile:</span><span class="badge-pill bad">Đống</span>không dùng cho chất thải hóa học lỏng/khí (chemical waste)</div>
+            <div class="exp-item-card"><span class="opt-name">amount:</span><span class="badge-pill good">Đúng</span>a huge amount of + N không đếm được (waste)</div>
+            <div class="exp-item-card"><span class="opt-name">volume:</span><span class="badge-pill bad">Thể tích/âm lượng</span>không chuẩn collocation</div>
+            <div class="exp-item-card"><span class="opt-name">number:</span><span class="badge-pill bad">Sai ngữ pháp</span>chỉ đi với danh từ đếm được số nhiều</div>
+          </div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> <span class="highlight-rule">Lượng từ với danh từ không đếm được:</span> "waste" (rác thải/chất thải) là danh từ không đếm được -> dùng <span class="highlight-target">a huge amount of waste</span>.</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> "number" chỉ đi với danh từ số nhiều đếm được; "pile" là đống đồ vật rắn.</div>
+        </div>
+      </div>
+
+      <!-- Q8 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 8</span><span class="q-type-pill">PREPOSITIONAL PHRASE</span></div>
+        <div class="q-text">Ngữ cảnh: "Turn off electrical appliances when not (8) __________."</div>
+        <div class="options-grid" id="optgrid_8">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(8, false, this)"><div class="opt-letter">A</div><div class="opt-text">in fact (A)</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(8, false, this)"><div class="opt-letter">B</div><div class="opt-text">in fact (B)</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(8, false, this)"><div class="opt-letter">C</div><div class="opt-text">on running</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(8, true, this)"><div class="opt-letter">D</div><div class="opt-text">in use</div></button>
+        </div>
+        <div class="explanation-box" id="exp_8">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="translation-bar">💬 <strong>Bước 1 - Dịch câu:</strong> Hãy tắt các thiết bị điện khi không sử dụng (when not in use).</div>
+          <div class="step-label">Bước 2 - Phân tích 4 đáp án:</div>
+          <div class="exp-grid">
+            <div class="exp-item-card"><span class="opt-name">in fact:</span><span class="badge-pill bad">Sai</span>trên thực tế</div>
+            <div class="exp-item-card"><span class="opt-name">on running:</span><span class="badge-pill bad">Sai</span>không có cụm này</div>
+            <div class="exp-item-card"><span class="opt-name">in use:</span><span class="badge-pill good">Đúng</span>when not in use: khi không được sử dụng</div>
+          </div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> <span class="highlight-rule">Cụm cố định Unit 2 (Global Success 10):</span> <span class="highlight-target">when not in use</span> (khi không sử dụng).</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> in fact và on running hoàn toàn sai nghĩa.</div>
+        </div>
+      </div>
+
+      <!-- Q9 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 9</span><span class="q-type-pill">VOCABULARY</span></div>
+        <div class="q-text">Ngữ cảnh: "Choose sustainable, (9) __________ products."</div>
+        <div class="options-grid" id="optgrid_9">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(9, false, this)"><div class="opt-letter">A</div><div class="opt-text">artificial (A)</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(9, false, this)"><div class="opt-letter">B</div><div class="opt-text">chemical</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(9, true, this)"><div class="opt-letter">C</div><div class="opt-text">organic</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(9, false, this)"><div class="opt-letter">D</div><div class="opt-text">artificial (D)</div></button>
+        </div>
+        <div class="explanation-box" id="exp_9">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="translation-bar">💬 <strong>Bước 1 - Dịch câu:</strong> Hãy lựa chọn các sản phẩm bền vững, hữu cơ (organic products).</div>
+          <div class="step-label">Bước 2 - Phân tích 4 đáp án:</div>
+          <div class="exp-grid">
+            <div class="exp-item-card"><span class="opt-name">artificial (adj):</span><span class="badge-pill bad">Nhân tạo</span>hóa chất nhân tạo</div>
+            <div class="exp-item-card"><span class="opt-name">chemical (adj):</span><span class="badge-pill bad">Hóa học</span>gây hại môi trường</div>
+            <div class="exp-item-card"><span class="opt-name">organic (adj):</span><span class="badge-pill good">Đúng</span>hữu cơ, tự nhiên không hóa chất độc hại</div>
+          </div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> <span class="highlight-rule">Từ vựng lối sống xanh:</span> Đi cùng với "sustainable" (bền vững) để bảo vệ môi trường là <span class="highlight-target">organic products</span> (các sản phẩm hữu cơ).</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> artificial và chemical là sản phẩm chứa hóa chất nhân tạo.</div>
+        </div>
+      </div>
+
+      <!-- Q10 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 10</span><span class="q-type-pill">LINKING PHRASE</span></div>
+        <div class="q-text">Ngữ cảnh: "(10) __________ saving your energy bill, these habits also help reduce your carbon footprint."</div>
+        <div class="options-grid" id="optgrid_10">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(10, false, this)"><div class="opt-letter">A</div><div class="opt-text">Instead of</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(10, true, this)"><div class="opt-letter">B</div><div class="opt-text">In addition to</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(10, false, this)"><div class="opt-letter">C</div><div class="opt-text">Because of</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(10, false, this)"><div class="opt-letter">D</div><div class="opt-text">Thanks to</div></button>
+        </div>
+        <div class="explanation-box" id="exp_10">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="translation-bar">💬 <strong>Bước 1 - Dịch câu:</strong> Bên cạnh việc (In addition to) tiết kiệm hóa đơn tiền điện, những thói quen này còn giúp giảm dấu chân carbon của bạn.</div>
+          <div class="step-label">Bước 2 - Phân tích 4 đáp án:</div>
+          <div class="exp-grid">
+            <div class="exp-item-card"><span class="opt-name">Instead of:</span><span class="badge-pill bad">Thay vì</span>sai vì cả 2 lợi ích đều đạt được</div>
+            <div class="exp-item-card"><span class="opt-name">In addition to:</span><span class="badge-pill good">Đúng</span>Bên cạnh, ngoài việc... (khớp với trạng từ "also" ở vế sau)</div>
+            <div class="exp-item-card"><span class="opt-name">Because of / Thanks to:</span><span class="badge-pill bad">Bởi vì / Nhờ có</span>sai quan hệ nhân quả</div>
+          </div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> <span class="highlight-rule">Cấu trúc bổ sung thông tin:</span> Vế sau có từ <strong>"also"</strong> (cũng giúp...), nên vế trước dùng <span class="highlight-target">In addition to + V-ing</span> (Ngoài việc tiết kiệm tiền điện ra...).</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> Instead of là loại trừ; Because of và Thanks to chỉ nguyên nhân.</div>
+        </div>
+      </div>
+
+      <!-- Q11 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 11</span><span class="q-type-pill">PRONOUN</span></div>
+        <div class="q-text">Ngữ cảnh: "Remember: If one person starts, (11) __________ will follow."</div>
+        <div class="options-grid" id="optgrid_11">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(11, false, this)"><div class="opt-letter">A</div><div class="opt-text">the others</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(11, true, this)"><div class="opt-letter">B</div><div class="opt-text">others</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(11, false, this)"><div class="opt-letter">C</div><div class="opt-text">one other</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(11, false, this)"><div class="opt-letter">D</div><div class="opt-text">another</div></button>
+        </div>
+        <div class="explanation-box" id="exp_11">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="translation-bar">💬 <strong>Bước 1 - Dịch câu:</strong> Hãy nhớ rằng: Nếu một người bắt đầu, những người khác (others) sẽ làm theo.</div>
+          <div class="step-label">Bước 2 - Phân tích 4 đáp án:</div>
+          <div class="exp-grid">
+            <div class="exp-item-card"><span class="opt-name">the others:</span><span class="badge-pill bad">Sai</span>chỉ dùng khi biết rõ tổng số người xác định</div>
+            <div class="exp-item-card"><span class="opt-name">others:</span><span class="badge-pill good">Đúng</span>những người khác nói chung (= other people)</div>
+            <div class="exp-item-card"><span class="opt-name">one other / another:</span><span class="badge-pill bad">Số ít</span>chỉ 1 người khác, không mang tính lan tỏa cộng đồng</div>
+          </div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> <span class="highlight-rule">Đại từ bất định:</span> Chỉ "những người khác nói chung trong xã hội" mà không giới hạn số lượng cụ thể: dùng đại từ <span class="highlight-target">others</span> (= other people).</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> "the others" chỉ những người còn lại trong một nhóm nhỏ đã biết sĩ số.</div>
+        </div>
+      </div>
+
+      <!-- Q12 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 12</span><span class="q-type-pill">PREPOSITION</span></div>
+        <div class="q-text">Ngữ cảnh: "Change doesn't come from (12) __________ the world—it starts with you."</div>
+        <div class="options-grid" id="optgrid_12">
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(12, true, this)"><div class="opt-letter">A</div><div class="opt-text">across (hoặc B. around)</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(12, true, this)"><div class="opt-letter">B</div><div class="opt-text">around (around/across the world)</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(12, false, this)"><div class="opt-letter">C</div><div class="opt-text">above</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(12, false, this)"><div class="opt-letter">D</div><div class="opt-text">beside</div></button>
+        </div>
+        <div class="explanation-box" id="exp_12">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="translation-bar">💬 <strong>Bước 1 - Dịch câu:</strong> Sự thay đổi không đến từ khắp nơi trên thế giới xa xôi – nó bắt đầu từ chính bạn.</div>
+          <div class="step-label">Bước 2 - Phân tích 4 đáp án:</div>
+          <div class="exp-grid">
+            <div class="exp-item-card"><span class="opt-name">across / around the world:</span><span class="badge-pill good">Đúng</span>khắp thế giới / vòng quanh thế giới</div>
+            <div class="exp-item-card"><span class="opt-name">above / beside:</span><span class="badge-pill bad">Sai</span>bên trên / bên cạnh thế giới (vô nghĩa)</div>
+          </div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> <span class="highlight-rule">Cụm giới từ đi với "the world":</span> Cả <span class="highlight-target">around the world</span> và <span class="highlight-target">across the world</span> đều là cụm cố định chỉ phạm vi toàn thế giới (hệ thống chấp nhận cả A và B là đáp án đúng).</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> above và beside không đi với "the world".</div>
+        </div>
+      </div>
+
+      <!-- PART 3: ARRANGEMENT (Q13 - Q17) -->
+      <div class="section-badge-card"><span>🔄</span><div><div>PART 3: UTTERANCE & PARAGRAPH ARRANGEMENT (QUESTIONS 13 - 17)</div><div style="font-size: 13px; font-weight: 600;">Sắp xếp hội thoại, bức thư và đoạn văn mạch lạc</div></div></div>
+
+      <!-- Q13 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 13</span><span class="q-type-pill">DIALOGUE ORDER</span></div>
+        <div class="q-text">
+          a. Jake: That might be greenwashing – it's just smart marketing.<br>
+          b. Olivia: This brand says their bottle is eco-friendly.<br>
+          c. Olivia: I'll check the label next time and only buy real sustainable products.
+        </div>
+        <div class="options-grid" id="optgrid_13">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(13, false, this)"><div class="opt-letter">A</div><div class="opt-text">b – c – a</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(13, false, this)"><div class="opt-letter">B</div><div class="opt-text">a – c – b</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(13, false, this)"><div class="opt-letter">C</div><div class="opt-text">c – b – a</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(13, true, this)"><div class="opt-letter">D</div><div class="opt-text">b – a – c</div></button>
+        </div>
+        <div class="explanation-box" id="exp_13">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="translation-bar">💬 <strong>Bước 1 - Dịch hội thoại:</strong> (b) Olivia: Nhãn hàng này nói chai nước của họ thân thiện với môi trường. -> (a) Jake: Đó có thể là chiêu trò 'tẩy xanh' (greenwashing) đấy – chỉ là tiếp thị khôn khéo thôi. -> (c) Olivia: Lần sau tớ sẽ kiểm tra kỹ nhãn mác và chỉ mua sản phẩm bền vững thực sự.</div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> Olivia nêu thông tin trên chai nước (b) -> Jake cảnh báo về greenwashing (a) -> Olivia rút kinh nghiệm cho lần mua sau (c): <span class="highlight-target">b – a – c</span>.</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> A để Olivia tự nói 2 câu liên tiếp; B và C đặt câu mở đầu sai.</div>
+        </div>
+      </div>
+
+      <!-- Q14 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 14</span><span class="q-type-pill">DIALOGUE ORDER</span></div>
+        <div class="q-text">
+          a. Minh: That's great! What's the aim of the campaign?<br>
+          b. Minh: I think we should also give a presentation on how to reduce our carbon footprint by using public transport and refillable bottles.<br>
+          c. Lan: It aims to encourage people to cut down on harmful activities and use more eco-friendly products at home.<br>
+          d. Lan: Our Youth Union has just set up a new campaign to raise students' awareness of climate change.<br>
+          e. Lan: Good idea! I'll make a plan and collect more information this weekend.
+        </div>
+        <div class="options-grid" id="optgrid_14">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(14, false, this)"><div class="opt-letter">A</div><div class="opt-text">b - c - d - e - a</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(14, true, this)"><div class="opt-letter">B</div><div class="opt-text">d - a - c - b - e</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(14, false, this)"><div class="opt-letter">C</div><div class="opt-text">b - d - a - c - e</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(14, false, this)"><div class="opt-letter">D</div><div class="opt-text">d - b - a - c - e</div></button>
+        </div>
+        <div class="explanation-box" id="exp_14">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="translation-bar">💬 <strong>Bước 1 - Dịch hội thoại:</strong> (d) Lan: Đoàn Thanh niên trường mình vừa phát động chiến dịch mới nâng cao nhận thức về biến đổi khí hậu. -> (a) Minh: Tuyệt quá! Mục tiêu của chiến dịch là gì thế? -> (c) Lan: Nó nhằm khuyến khích mọi người cắt giảm hoạt động có hại... -> (b) Minh: Tớ nghĩ chúng mình cũng nên thuyết trình về cách giảm dấu chân carbon... -> (e) Lan: Ý kiến hay đấy! Cuối tuần này tớ sẽ lập kế hoạch.</div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> Lan thông báo chiến dịch mới (d) -> Minh hỏi mục tiêu "What's the aim...?" (a) -> Lan trả lời "It aims to..." (c) -> Minh đóng góp thêm ý tưởng (b) -> Lan khen "Good idea!" (e): <span class="highlight-target">d - a - c - b - e</span>.</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> A, C, D phá vỡ cặp hỏi - đáp trực tiếp giữa (a) "What's the aim...?" và (c) "It aims to...".</div>
+        </div>
+      </div>
+
+      <!-- Q15 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 15</span><span class="q-type-pill">LETTER ORDER</span></div>
+        <div class="q-text">
+          Dear Alex,<br>
+          I hope you're doing well. I wanted to tell you about an environmental campaign we recently joined at school.<br>
+          a. In class, we learned how climate change, caused by harmful emissions, has a serious impact on both people and natural resources.<br>
+          b. Last weekend, our youth union organized a ceremony to encourage students to reduce their carbon footprint by using eco-friendly and reusable items.<br>
+          c. We were also reminded to turn off electrical appliances when not in use and to sort waste before recycling.<br>
+          d. Thanks to this activity, I've realized that even small changes can make a difference and help protect our environment sustainably.<br>
+          e. To raise awareness, we created posters made from recycled materials, and I gave a presentation on how to cut down on electricity use in a modern household.<br>
+          Best wishes, Thắng
+        </div>
+        <div class="options-grid" id="optgrid_15">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(15, false, this)"><div class="opt-letter">A</div><div class="opt-text">b – c – d – e – a</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(15, false, this)"><div class="opt-letter">B</div><div class="opt-text">b – a – d – e – c</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(15, true, this)"><div class="opt-letter">C</div><div class="opt-text">b – c – a – e – d</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(15, false, this)"><div class="opt-letter">D</div><div class="opt-text">b – d – a – c – e</div></button>
+        </div>
+        <div class="explanation-box" id="exp_15">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="translation-bar">💬 <strong>Bước 1 - Dịch thư:</strong> (b) Cuối tuần trước, Đoàn trường tổ chức buổi lễ khuyến khích học sinh giảm dấu chân carbon... -> (c) Chúng mình cũng được nhắc nhở (We were also reminded...) tắt thiết bị điện và phân loại rác -> (a) Trong lớp học, chúng mình tìm hiểu tác động của biến đổi khí hậu -> (e) Để nâng cao nhận thức, chúng mình làm áp phích tái chế và tớ đã thuyết trình... -> (d) Nhờ hoạt động này (Thanks to this activity), tớ nhận ra những thay đổi nhỏ cũng tạo nên sự khác biệt.</div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> Mở đầu kể sự kiện cuối tuần trước (b) -> Bổ sung lời nhắc nhở trong buổi lễ bằng "We were also reminded..." (c) -> Kiến thức học trên lớp (a) -> Hành động thực tế làm áp phích & thuyết trình (e) -> Bài học rút ra ở cuối thư "Thanks to this activity, I've realized..." (d): <span class="highlight-target">b – c – a – e – d</span>.</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> A, B, D không đặt câu đúc kết nhận thức cá nhân (d) ở vị trí kết thư.</div>
+        </div>
+      </div>
+
+      <!-- Q16 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 16</span><span class="q-type-pill">PARAGRAPH ORDER</span></div>
+        <div class="q-text">
+          a. These bottles are used once and thrown away, which leads to a large amount of plastic waste.<br>
+          b. Although plastic bottles are cheap, they have serious long-term effects.<br>
+          c. That's why we should bring our own reusable bottles to protect the environment.<br>
+          d. In many schools, students still buy plastic bottles every day.<br>
+          e. Over time, this waste pollutes rivers and oceans, harming fish and sea birds.
+        </div>
+        <div class="options-grid" id="optgrid_16">
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(16, true, this)"><div class="opt-letter">A</div><div class="opt-text">d – b – a – e – c</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(16, false, this)"><div class="opt-letter">B</div><div class="opt-text">c – b – a – e – d</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(16, false, this)"><div class="opt-letter">C</div><div class="opt-text">d – a – e – b – c</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(16, false, this)"><div class="opt-letter">D</div><div class="opt-text">c – d – e – b – a</div></button>
+        </div>
+        <div class="explanation-box" id="exp_16">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="translation-bar">💬 <strong>Bước 1 - Dịch đoạn văn:</strong> (d) Ở nhiều trường học, học sinh vẫn mua chai nhựa mỗi ngày -> (b) Mặc dù chai nhựa rẻ nhưng chúng để lại hậu quả lâu dài nghiêm trọng -> (a) Những chiếc chai này chỉ dùng 1 lần rồi vứt đi, tạo ra lượng lớn rác thải nhựa (plastic waste) -> (e) Theo thời gian, lượng rác thải này (this waste) làm ô nhiễm sông ngòi và đại dương -> (c) Đó là lý do (That's why) chúng ta nên mang bình tái sử dụng của riêng mình.</div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> Cụm "plastic waste" ở cuối câu (a) nối trực tiếp với "this waste" ở đầu câu (e), và câu (c) "That's why..." đứng cuối đoạn để đưa ra lời khuyên kết luận: <span class="highlight-target">d – b – a – e – c</span>.</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> B, D đặt "That's why" ở đầu đoạn; C đặt câu khái quát (b) sau khi đã phân tích chi tiết (a, e).</div>
+        </div>
+      </div>
+
+      <!-- Q17 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 17</span><span class="q-type-pill">PARAGRAPH ORDER</span></div>
+        <div class="q-text">
+          a. This problem doesn't just affect humans—it also disrupts wildlife, particularly birds and sea turtles, which rely on natural darkness for survival.<br>
+          b. While artificial light is necessary for safety and convenience, we should minimize its use by turning off unnecessary lights.<br>
+          c. Light pollution is a growing environmental issue caused by excessive artificial lighting in cities at night.<br>
+          d. By raising awareness, people can adopt simple habits to reduce light pollution, protecting both ecosystems and human well-being.<br>
+          e. As a result, the night sky becomes overly bright, making it difficult to see stars clearly.
+        </div>
+        <div class="options-grid" id="optgrid_17">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(17, false, this)"><div class="opt-letter">A</div><div class="opt-text">b – e – a – c – d</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(17, false, this)"><div class="opt-letter">B</div><div class="opt-text">a – b – e – c – d</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(17, true, this)"><div class="opt-letter">C</div><div class="opt-text">c – e – a – b – d</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(17, false, this)"><div class="opt-letter">D</div><div class="opt-text">e – b – c – a – d</div></button>
+        </div>
+        <div class="explanation-box" id="exp_17">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="translation-bar">💬 <strong>Bước 1 - Dịch đoạn văn:</strong> (c) Ô nhiễm ánh sáng là vấn đề môi trường gia tăng do chiếu sáng nhân tạo quá mức vào ban đêm -> (e) Kết quả là bầu trời đêm trở nên quá sáng, khó nhìn thấy sao -> (a) Vấn đề này không chỉ ảnh hưởng con người mà còn làm xáo trộn động vật hoang dã -> (b) Dù ánh sáng nhân tạo cần thiết cho sự an toàn, chúng ta nên giảm thiểu bằng cách tắt đèn không cần thiết -> (d) Bằng việc nâng cao nhận thức, mọi người có thể áp dụng thói quen đơn giản để giảm ô nhiễm ánh sáng.</div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> Mở đầu bằng câu định nghĩa "Light pollution is..." (c) -> Hệ quả trực tiếp lên bầu trời đêm "As a result..." (e) -> Mở rộng tác hại sang động vật "This problem doesn't just affect humans—it also..." (a) -> Giải pháp giảm thiểu (b -> d): <span class="highlight-target">c – e – a – b – d</span>.</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> A, B, D không bắt đầu bằng câu chủ đề định nghĩa "Light pollution" (c).</div>
+        </div>
+      </div>
+
+      <!-- PART 4: ILLEGAL HUNTING PASSAGE COMPLETION (Q18 - Q22) -->
+      <div class="section-badge-card"><span>🐅</span><div><div>PART 4: ILLEGAL HUNTING PASSAGE COMPLETION (QUESTIONS 18 - 22)</div><div style="font-size: 13px; font-weight: 600;">Chọn mệnh đề/câu hoàn chỉnh điền vào chỗ trống từ câu 18 đến 22 [Adapted from i-Learn Smart World 10]</div></div></div>
+
+      <!-- Q18 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 18</span><span class="q-type-pill">TOPIC SENTENCE</span></div>
+        <div class="q-text">Ngữ cảnh: "(18) __________. This essay will explain some problems with it and give some possible solutions.<br>One problem caused by illegal hunting is that it can make some animals go extinct."</div>
+        <div class="options-grid" id="optgrid_18">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(18, false, this)"><div class="opt-letter">A</div><div class="opt-text">Protecting the environment requires action from people and governments</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(18, true, this)"><div class="opt-letter">B</div><div class="opt-text">Illegal hunting is one of the main environmental issues in the world today</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(18, false, this)"><div class="opt-letter">C</div><div class="opt-text">Endangered animals face threats from a variety of sources in nature</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(18, false, this)"><div class="opt-letter">D</div><div class="opt-text">Some environmental issues are harder to solve than others</div></button>
+        </div>
+        <div class="explanation-box" id="exp_18">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="translation-bar">💬 <strong>Bước 1 - Dịch câu:</strong> Săn bắt trái phép là một trong những vấn đề môi trường chính trên thế giới hiện nay. Bài tiểu luận này sẽ giải thích một số vấn đề của nó (it) và đưa ra các giải pháp khả thi.</div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> Câu sau có đại từ số ít <strong>"with it"</strong> và đoạn 2 bắt đầu bằng "One problem caused by <strong>illegal hunting</strong>...", nên câu (18) bắt buộc phải giới thiệu chủ đề chính là <span class="highlight-target">Illegal hunting is one of the main environmental issues in the world today</span>.</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> A, C, D không nêu danh từ số ít "Illegal hunting" để đại từ "it" ở câu sau quy chiếu tới.</div>
+        </div>
+      </div>
+
+      <!-- Q19 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 19</span><span class="q-type-pill">CLAUSE LINKING</span></div>
+        <div class="q-text">Ngữ cảnh: "Some animals now have very small populations, (19) __________."</div>
+        <div class="options-grid" id="optgrid_19">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(19, false, this)"><div class="opt-letter">A</div><div class="opt-text">so their extinction is what will happen if we stop illegal hunting</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(19, false, this)"><div class="opt-letter">B</div><div class="opt-text">they may become extinct if people do not stop illegal hunting</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(19, false, this)"><div class="opt-letter">C</div><div class="opt-text">though prevention of illegal hunting is crucial for their survival</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(19, true, this)"><div class="opt-letter">D</div><div class="opt-text">and they might go extinct if we don't stop illegal hunting</div></button>
+        </div>
+        <div class="explanation-box" id="exp_19">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="translation-bar">💬 <strong>Bước 1 - Dịch câu:</strong> Một số loài động vật hiện có quần thể rất nhỏ, và chúng có thể bị tuyệt chủng nếu chúng ta không chấm dứt nạn săn bắt trái phép.</div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> Sau dấu phẩy nối hai mệnh đề độc lập cần có liên từ kết hợp ("and"): <span class="highlight-target">and they might go extinct if we don't stop illegal hunting</span> (trích nguyên văn từ <em>i-Learn Smart World 10 Workbook</em>).</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> A sai nghĩa ("tuyệt chủng nếu chúng ta dừng săn bắt"); B mắc lỗi Comma Splice (nối 2 mệnh đề độc lập bằng dấu phẩy mà không có liên từ); C dùng "though" sai logic.</div>
+        </div>
+      </div>
+
+      <!-- Q20 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 20</span><span class="q-type-pill">TOPIC SENTENCE</span></div>
+        <div class="q-text">Ngữ cảnh: "Another problem (20) __________. Some fishermen break coral to try to catch rare fish."</div>
+        <div class="options-grid" id="optgrid_20">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(20, false, this)"><div class="opt-letter">A</div><div class="opt-text">that involves marine species has been widely studied in biology</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(20, false, this)"><div class="opt-letter">B</div><div class="opt-text">which is also related to environmental harm is deforestation</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(20, false, this)"><div class="opt-letter">C</div><div class="opt-text">resulting from human activities is soil degradation in remote areas</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(20, true, this)"><div class="opt-letter">D</div><div class="opt-text">caused by illegal hunting is that it can cause damage to coral reefs</div></button>
+        </div>
+        <div class="explanation-box" id="exp_20">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="translation-bar">💬 <strong>Bước 1 - Dịch câu:</strong> Một vấn đề khác do săn bắt trái phép gây ra là nó có thể làm hư hại các rạn san hô. Một số ngư dân đập phá san hô để cố bắt những loài cá quý hiếm.</div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> Liên kết trực tiếp với câu sau ("Some fishermen break coral...") và cấu trúc song hành với đoạn 2 ("One problem caused by illegal hunting is that..."): <span class="highlight-target">caused by illegal hunting is that it can cause damage to coral reefs</span>.</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> B nói về phá rừng (deforestation); C nói về thoái hóa đất (soil degradation); A không nêu vấn đề phá hủy san hô.</div>
+        </div>
+      </div>
+
+      <!-- Q21 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 21</span><span class="q-type-pill">ADVERBIAL CLAUSE OF REASON</span></div>
+        <div class="q-text">Ngữ cảnh: "Breaking coral does harm to the ecosystem of the ocean (21) __________."</div>
+        <div class="options-grid" id="optgrid_21">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(21, false, this)"><div class="opt-letter">A</div><div class="opt-text">therefore, thousands of species of fish and other animals become homeless without coral reefs</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(21, false, this)"><div class="opt-letter">B</div><div class="opt-text">which destroys the habitat of fish and thousands of other animals by destroying coral</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(21, false, this)"><div class="opt-letter">C</div><div class="opt-text">so corals no longer have a place to live due to destruction and affect many aquatic animals, especially fish</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(21, true, this)"><div class="opt-letter">D</div><div class="opt-text">because coral reefs are the homes for thousands of species of fish and other animals</div></button>
+        </div>
+        <div class="explanation-box" id="exp_21">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="translation-bar">💬 <strong>Bước 1 - Dịch câu:</strong> Việc đập phá san hô gây hại cho hệ sinh thái đại dương bởi vì các rạn san hô là ngôi nhà của hàng ngàn loài cá và các loài động vật khác.</div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> Giải thích nguyên nhân tại sao phá san hô lại gây hại cho hệ sinh thái biển: <span class="highlight-target">because coral reefs are the homes for thousands of species of fish and other animals</span> (nguyên văn sách <em>i-Learn Smart World 10</em>).</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> A dùng "therefore" không có dấu chấm phẩy trước đó; B lặp từ "Breaking coral... by destroying coral"; C diễn đạt lủng củng ("corals no longer have a place to live").</div>
+        </div>
+      </div>
+
+      <!-- Q22 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 22</span><span class="q-type-pill">PASSIVE MODAL</span></div>
+        <div class="q-text">Ngữ cảnh: "To conclude, illegal hunting can cause animals to go extinct. It can also cause damage to the environment. These problems (22) __________. Making people pay lots of money for hunting and teaching people not to hunt rare animals will help save the environment."</div>
+        <div class="options-grid" id="optgrid_22">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(22, false, this)"><div class="opt-letter">A</div><div class="opt-text">has been dealt with through action by people and governments</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(22, true, this)"><div class="opt-letter">B</div><div class="opt-text">can be solved with action from governments and people</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(22, false, this)"><div class="opt-letter">C</div><div class="opt-text">should have been prevented in the past by stricter policies</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(22, false, this)"><div class="opt-letter">D</div><div class="opt-text">this action bypasses the handling but the government's request</div></button>
+        </div>
+        <div class="explanation-box" id="exp_22">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="translation-bar">💬 <strong>Bước 1 - Dịch câu:</strong> Những vấn đề này có thể được giải quyết bằng hành động từ phía chính phủ và người dân.</div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> Chủ ngữ số nhiều "These problems" + động từ khuyết thiếu bị động chỉ khả năng giải quyết vấn đề: <span class="highlight-target">can be solved with action from governments and people</span>.</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> A chia "has been" số ít là sai với chủ ngữ số nhiều "These problems"; C chỉ sự tiếc nuối trong quá khứ; D vô nghĩa.</div>
+        </div>
+      </div>
+
+      <!-- PART 5: A DELICATE BALANCE (Q23 - Q30) -->
+      <div class="section-badge-card"><span>⚖️</span><div><div>PART 5: A DELICATE BALANCE (QUESTIONS 23 - 30)</div><div style="font-size: 13px; font-weight: 600;">Đọc hiểu về mối quan hệ hai chiều giữa con người và môi trường</div></div></div>
+
+      <!-- Q23 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 23</span><span class="q-type-pill">NOT MENTIONED</span></div>
+        <div class="q-text">Which of the following is NOT MENTIONED as a consequence of environmental damage in the passage?</div>
+        <div class="options-grid" id="optgrid_23">
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(23, true, this)"><div class="opt-letter">A</div><div class="opt-text">A decrease in global food supply</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(23, false, this)"><div class="opt-letter">B</div><div class="opt-text">More frequent floods and wildfires</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(23, false, this)"><div class="opt-letter">C</div><div class="opt-text">A rise in global temperatures</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(23, false, this)"><div class="opt-letter">D</div><div class="opt-text">The loss of biodiversity</div></button>
+        </div>
+        <div class="explanation-box" id="exp_23">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> Đoạn 2 nhắc đến: "biodiversity loss" (D), "Rising global temperatures" (C), "more frequent natural disasters like floods, wildfires" (B). Bài chỉ nói thiên tai "threaten food security" (đe dọa an ninh lương thực) chứ KHÔNG nói nguồn cung thực phẩm toàn cầu đã bị sụt giảm (<span class="highlight-target">A decrease in global food supply</span>).</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> B, C, D đều được nêu trực tiếp ở đoạn 2.</div>
+        </div>
+      </div>
+
+      <!-- Q24 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 24</span><span class="q-type-pill">SYNONYM</span></div>
+        <div class="q-text">The word "consequences" in paragraph 2 ("we are now witnessing severe environmental <u>consequences</u>") is closest in meaning to:</div>
+        <div class="options-grid" id="optgrid_24">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(24, false, this)"><div class="opt-letter">A</div><div class="opt-text">causes</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(24, true, this)"><div class="opt-letter">B</div><div class="opt-text">outcomes</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(24, false, this)"><div class="opt-letter">C</div><div class="opt-text">warnings</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(24, false, this)"><div class="opt-letter">D</div><div class="opt-text">reactions</div></button>
+        </div>
+        <div class="explanation-box" id="exp_24">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> "consequences" (hậu quả, kết quả) đồng nghĩa trực tiếp với <span class="highlight-target">outcomes</span> (kết quả, hệ quả).</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> causes là nguyên nhân (trái nghĩa); warnings là lời cảnh báo; reactions là phản ứng.</div>
+        </div>
+      </div>
+
+      <!-- Q25 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 25</span><span class="q-type-pill">REFERENCE</span></div>
+        <div class="q-text">What does the word "These effects" in paragraph 2 ("we are now witnessing severe environmental consequences, including climate change, biodiversity loss, and increased pollution. <u>These effects</u>, in turn, influence human life.") refer to?</div>
+        <div class="options-grid" id="optgrid_25">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(25, false, this)"><div class="opt-letter">A</div><div class="opt-text">rising global temperatures</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(25, true, this)"><div class="opt-letter">B</div><div class="opt-text">environmental consequences</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(25, false, this)"><div class="opt-letter">C</div><div class="opt-text">human activities</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(25, false, this)"><div class="opt-letter">D</div><div class="opt-text">deforestation and fossil fuel use</div></button>
+        </div>
+        <div class="explanation-box" id="exp_25">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> "These effects" (Những tác động/hệ quả này) quy chiếu trực tiếp đến cụm danh từ <span class="highlight-target">environmental consequences</span> (các hậu quả môi trường bao gồm biến đổi khí hậu, mất đa dạng sinh học và ô nhiễm gia tăng) ở câu liền trước.</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> A chỉ là 1 ý nhỏ ở câu sau; C và D là nguyên nhân ở đoạn 1.</div>
+        </div>
+      </div>
+
+      <!-- Q26 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 26</span><span class="q-type-pill">ANTONYM</span></div>
+        <div class="q-text">The word "sustainable" in paragraph 3 ("<u>sustainable</u> farming methods") is OPPOSITE in meaning to:</div>
+        <div class="options-grid" id="optgrid_26">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(26, false, this)"><div class="opt-letter">A</div><div class="opt-text">eco-friendly</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(26, false, this)"><div class="opt-letter">B</div><div class="opt-text">renewable</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(26, true, this)"><div class="opt-letter">C</div><div class="opt-text">short-term</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(26, false, this)"><div class="opt-letter">D</div><div class="opt-text">long-lasting</div></button>
+        </div>
+        <div class="explanation-box" id="exp_26">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> "sustainable" (bền vững, duy trì được lâu dài mà không làm hại môi trường) >< trái nghĩa với <span class="highlight-target">short-term</span> (ngắn hạn, nhất thời).</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> eco-friendly, renewable, long-lasting đều là các từ cùng trường nghĩa tích cực với sustainable.</div>
+        </div>
+      </div>
+
+      <!-- Q27 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 27</span><span class="q-type-pill">MAIN IDEA OF PARAGRAPH</span></div>
+        <div class="q-text">Which of the following best expresses the main idea of paragraph 3?</div>
+        <div class="options-grid" id="optgrid_27">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(27, false, this)"><div class="opt-letter">A</div><div class="opt-text">People must live with the consequences of climate change.</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(27, true, this)"><div class="opt-letter">B</div><div class="opt-text">There are new ways to positively influence the environment.</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(27, false, this)"><div class="opt-letter">C</div><div class="opt-text">Governments should limit individual behavior.</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(27, false, this)"><div class="opt-letter">D</div><div class="opt-text">Environmental damage is unavoidable.</div></button>
+        </div>
+        <div class="explanation-box" id="exp_27">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> Đoạn 3 nêu rõ con người không chỉ là nạn nhân thụ động mà còn là tác nhân thay đổi tích cực ("agents of change") thông qua công nghệ mới, nông nghiệp bền vững và năng lượng tái tạo: <span class="highlight-target">There are new ways to positively influence the environment.</span></div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> A và D mang tư tưởng bi quan thụ động trái ngược với câu đầu đoạn 3; C không được đề cập.</div>
+        </div>
+      </div>
+
+      <!-- Q28 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 28</span><span class="q-type-pill">TRUE STATEMENT</span></div>
+        <div class="q-text">Which of the following statements is TRUE according to the passage?</div>
+        <div class="options-grid" id="optgrid_28">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(28, false, this)"><div class="opt-letter">A</div><div class="opt-text">Climate change only affects the environment, not humans.</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(28, false, this)"><div class="opt-letter">B</div><div class="opt-text">Governments alone can solve environmental problems.</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(28, true, this)"><div class="opt-letter">C</div><div class="opt-text">Individuals have a role in protecting the planet.</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(28, false, this)"><div class="opt-letter">D</div><div class="opt-text">Technological solutions are ineffective in addressing climate change.</div></button>
+        </div>
+        <div class="explanation-box" id="exp_28">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> Cuối đoạn 3 viết: "Governments, organizations, and <strong>individuals all play a role</strong> in promoting environmental responsibility." -> Khớp hoàn toàn với <span class="highlight-target">Đáp án C</span>.</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> A, B, D đều sai sự thật so với bài đọc.</div>
+        </div>
+      </div>
+
+      <!-- Q29 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 29</span><span class="q-type-pill">PARAGRAPH LOCATION</span></div>
+        <div class="q-text">In which paragraph does the writer show a cause-effect relationship?</div>
+        <div class="options-grid" id="optgrid_29">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(29, false, this)"><div class="opt-letter">A</div><div class="opt-text">Paragraph 1</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(29, true, this)"><div class="opt-letter">B</div><div class="opt-text">Paragraph 2</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(29, false, this)"><div class="opt-letter">C</div><div class="opt-text">Paragraph 3</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(29, false, this)"><div class="opt-letter">D</div><div class="opt-text">Paragraph 4</div></button>
+        </div>
+        <div class="explanation-box" id="exp_29">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> <span class="highlight-target">Paragraph 2</span> bắt đầu bằng cụm từ chỉ kết quả "As a result, we are now witnessing severe environmental consequences..." và dùng động từ "lead to" ("Rising global temperatures lead to more frequent natural disasters...").</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> Đoạn 1 giới thiệu lịch sử; Đoạn 3 nêu giải pháp; Đoạn 4 kết luận.</div>
+        </div>
+      </div>
+
+      <!-- Q30 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 30</span><span class="q-type-pill">PARAGRAPH LOCATION</span></div>
+        <div class="q-text">Which paragraph shows a shift from humans as a cause of damage to agents of change?</div>
+        <div class="options-grid" id="optgrid_30">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(30, false, this)"><div class="opt-letter">A</div><div class="opt-text">Paragraph 1</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(30, false, this)"><div class="opt-letter">B</div><div class="opt-text">Paragraph 2</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(30, true, this)"><div class="opt-letter">C</div><div class="opt-text">Paragraph 3</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(30, false, this)"><div class="opt-letter">D</div><div class="opt-text">Paragraph 4</div></button>
+        </div>
+        <div class="explanation-box" id="exp_30">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> <span class="highlight-target">Paragraph 3</span> chuyển hướng rõ rệt: "Despite these challenges, humans are not just passive victims of environmental change. We are also <strong>agents of change</strong>."</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> Đoạn 1, 2 nói về tác hại; Đoạn 4 tổng kết.</div>
+        </div>
+      </div>
+
+      <!-- PART 6: IMPACTS OF LAND POLLUTION (Q31 - Q40) -->
+      <div class="section-badge-card"><span>🗑️</span><div><div>PART 6: IMPACTS OF LAND POLLUTION (QUESTIONS 31 - 40)</div><div style="font-size: 13px; font-weight: 600;">Đọc hiểu về Ô nhiễm đất, các bãi rác và sự bất bình đẳng môi trường</div></div></div>
+
+      <!-- Q31 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 31</span><span class="q-type-pill">SENTENCE INSERTION</span></div>
+        <div class="q-text">Where in paragraph 2/3 does the following sentence best fit: <strong>"But activists drew attention to government inaction and the role of organized crime in illegal dumping."</strong>?<br><em>(Đoạn 2: "...For example, Campania is a place in Italy, north of Naples. [I] People call it the 'land of fires' because of burning and dumping of dangerous waste. This has made the land and water dirty. Many people there, even children, have become sick, and some got cancer. [II] In 2025, a European court told Italy to make a plan to check the pollution and help people spread public awareness.")</em></div>
+        <div class="options-grid" id="optgrid_31">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(31, false, this)"><div class="opt-letter">A</div><div class="opt-text">[I]</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(31, true, this)"><div class="opt-letter">B</div><div class="opt-text">[II]</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(31, false, this)"><div class="opt-letter">C</div><div class="opt-text">[III]</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(31, false, this)"><div class="opt-letter">D</div><div class="opt-text">[IV]</div></button>
+        </div>
+        <div class="explanation-box" id="exp_31">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="translation-bar">💬 <strong>Bước 1 - Dịch câu chèn:</strong> Nhưng các nhà hoạt động đã thu hút sự chú ý vào sự thờ ơ không hành động của chính quyền và vai trò của tội phạm có tổ chức trong việc đổ trộm chất thải.</div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> Ở đoạn 2 nói về vùng Campania (Ý) bị đốt và đổ trộm rác thải nguy hại ("burning and dumping of dangerous waste") khiến nhiều người mắc bệnh ung thư. Tại vị trí <span class="highlight-target">[II]</span>, các nhà hoạt động lên tiếng tố cáo việc đổ trộm rác thải ("illegal dumping") và sự tắc trách của chính phủ, dẫn tới câu tiếp theo: "In 2025, a European court told Italy to make a plan...".</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> [I] chưa nhắc tới nạn "dumping"; [III] và [IV] thuộc đoạn 3 nói về sạt lở núi rác ở Philippines do mưa lớn chứ không phải tội phạm có tổ chức đổ trộm hóa chất.</div>
+        </div>
+      </div>
+
+      <!-- Q32 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 32</span><span class="q-type-pill">PHRASE MEANING</span></div>
+        <div class="q-text">The phrase "takes up space in the gut" in paragraph 1 ("When animals eat litter, it <u>takes up space in the gut</u> without providing nutrition, making them feel full and possibly leading to starvation.") is closest in meaning to:</div>
+        <div class="options-grid" id="optgrid_32">
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(32, true, this)"><div class="opt-letter">A</div><div class="opt-text">blocks the digestive system without giving any nourishment</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(32, false, this)"><div class="opt-letter">B</div><div class="opt-text">travels quickly through the body's immune system</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(32, false, this)"><div class="opt-letter">C</div><div class="opt-text">creates holes in the organs of animals causing them to bleed</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(32, false, this)"><div class="opt-letter">D</div><div class="opt-text">allows nutrients to enter the animal's body with ease</div></button>
+        </div>
+        <div class="explanation-box" id="exp_32">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="translation-bar">💬 <strong>Bước 1 - Dịch cụm từ:</strong> "takes up space in the gut without providing nutrition" nghĩa là chiếm chỗ/lấp đầy trong ruột (hệ tiêu hóa) mà không cung cấp chất dinh dưỡng.</div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> "the gut" = "the digestive system" (ruột/hệ tiêu hóa); "takes up space... without providing nutrition" = <span class="highlight-target">blocks the digestive system without giving any nourishment</span>.</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> B nói về hệ miễn dịch (immune system); C nói về chảy máu; D ngược nghĩa.</div>
+        </div>
+      </div>
+
+      <!-- Q33 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 33</span><span class="q-type-pill">REFERENCE</span></div>
+        <div class="q-text">What does the word "They" in paragraph 3 ("Thousands of people lived on the slopes of the landfill. <u>They</u> made their living from recycling and selling items in the landfill.") refer to?</div>
+        <div class="options-grid" id="optgrid_33">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(33, false, this)"><div class="opt-letter">A</div><div class="opt-text">The landslides that occurred due to rainfall</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(33, true, this)"><div class="opt-letter">B</div><div class="opt-text">The people who lived near the landfill and recycled trash</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(33, false, this)"><div class="opt-letter">C</div><div class="opt-text">The victims who filed lawsuits against the government</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(33, false, this)"><div class="opt-letter">D</div><div class="opt-text">The judges who decided the court ruling in 2020</div></button>
+        </div>
+        <div class="explanation-box" id="exp_33">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> Câu liền trước viết: "Thousands of people lived on the slopes of the landfill." Do đó "They" quy chiếu trực tiếp đến những người dân sống ở bãi rác kiếm sống bằng nghề thu gom tái chế: <span class="highlight-target">The people who lived near the landfill and recycled trash</span>.</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> A, C, D không phải là chủ ngữ của câu liền trước.</div>
+        </div>
+      </div>
+
+      <!-- Q34 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 34</span><span class="q-type-pill">NOT MENTIONED</span></div>
+        <div class="q-text">Which of the following is NOT mentioned as a consequence of land pollution in the passage?</div>
+        <div class="options-grid" id="optgrid_34">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(34, false, this)"><div class="opt-letter">A</div><div class="opt-text">It can cause health problems in humans, especially children.</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(34, true, this)"><div class="opt-letter">B</div><div class="opt-text">It leads to economic loss due to damage in agricultural areas.</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(34, false, this)"><div class="opt-letter">C</div><div class="opt-text">It can be life-threatening in cases like trash landslides.</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(34, false, this)"><div class="opt-letter">D</div><div class="opt-text">It can cause long-term contamination of land and water.</div></button>
+        </div>
+        <div class="explanation-box" id="exp_34">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> Bài đọc nêu vấn đề sức khỏe ở người và trẻ em (A - đoạn 2), làm bẩn đất và nước (D - đoạn 2), gây chết người do sạt lở rác (C - đoạn 3), nhưng KHÔNG đề cập đến thiệt hại kinh tế trong nông nghiệp (<span class="highlight-target">economic loss due to damage in agricultural areas</span>).</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> A, C, D đều được đề cập rõ trong đoạn 2 và đoạn 3.</div>
+        </div>
+      </div>
+
+      <!-- Q35 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 35</span><span class="q-type-pill">MAIN IDEA OF PARAGRAPH</span></div>
+        <div class="q-text">What is the main idea of paragraph 2?</div>
+        <div class="options-grid" id="optgrid_35">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(35, false, this)"><div class="opt-letter">A</div><div class="opt-text">Burning toxic waste in certain areas increases cancer rates among animals.</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(35, false, this)"><div class="opt-letter">B</div><div class="opt-text">Countries must develop ways to store waste properly underground.</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(35, true, this)"><div class="opt-letter">C</div><div class="opt-text">Living near dumpsites exposes people to serious health hazards.</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(35, false, this)"><div class="opt-letter">D</div><div class="opt-text">Many local residents volunteer to monitor their polluted environments.</div></button>
+        </div>
+        <div class="explanation-box" id="exp_35">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> Câu mở đầu đoạn 2 nêu rõ ý chính: "People can get sick if they live near landfills or trash areas. These places can cause health problems like breathing or heart diseases... some got cancer." -> Sống gần bãi rác khiến con người phơi nhiễm với những nguy cơ sức khỏe nghiêm trọng: <span class="highlight-target">Đáp án C</span>.</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> A nói về động vật (đoạn 2 nói về con người); B và D không có trong đoạn 2.</div>
+        </div>
+      </div>
+
+      <!-- Q36 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 36</span><span class="q-type-pill">ANTONYM</span></div>
+        <div class="q-text">The word "dumping" in paragraph 2 ("because of burning and <u>dumping</u> of dangerous waste") is OPPOSITE in meaning to:</div>
+        <div class="options-grid" id="optgrid_36">
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(36, true, this)"><div class="opt-letter">A</div><div class="opt-text">reusing</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(36, false, this)"><div class="opt-letter">B</div><div class="opt-text">burning</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(36, false, this)"><div class="opt-letter">C</div><div class="opt-text">throwing</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(36, false, this)"><div class="opt-letter">D</div><div class="opt-text">making</div></button>
+        </div>
+        <div class="explanation-box" id="exp_36">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> "dumping" (vứt bỏ, đổ thải đi) >< trái nghĩa trong chủ đề môi trường là <span class="highlight-target">reusing</span> (giữ lại để tái sử dụng).</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> throwing là từ đồng nghĩa; burning và making không đối lập với việc vứt bỏ.</div>
+        </div>
+      </div>
+
+      <!-- Q37 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 37</span><span class="q-type-pill">TRUE STATEMENT</span></div>
+        <div class="q-text">Which of the following statements is TRUE according to the passage?</div>
+        <div class="options-grid" id="optgrid_37">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(37, false, this)"><div class="opt-letter">A</div><div class="opt-text">All countries produce the same amount of trash regardless of income level.</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(37, false, this)"><div class="opt-letter">B</div><div class="opt-text">People who live far from landfills rarely face health-related risks.</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(37, true, this)"><div class="opt-letter">C</div><div class="opt-text">High-income countries produce more waste relative to their population size.</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(37, false, this)"><div class="opt-letter">D</div><div class="opt-text">Land pollution causes more deaths than any other type of pollution.</div></button>
+        </div>
+        <div class="explanation-box" id="exp_37">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> Đoạn 4 ghi rõ: "High-income countries produce 34% of the world's trash but make up only 16% of the world's population." (Chỉ chiếm 16% dân số nhưng thải ra tới 34% lượng rác toàn cầu -> thải nhiều rác hơn hẳn so với quy mô dân số): <span class="highlight-target">Đáp án C</span>.</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> A trái ngược đoạn 4; B và D không có căn cứ trong bài.</div>
+        </div>
+      </div>
+
+      <!-- Q38 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 38</span><span class="q-type-pill">PARAPHRASE</span></div>
+        <div class="q-text">Which of the following best paraphrases the sentence: <u>“Animals can become entangled in litter or mistake it for food.”</u>?</div>
+        <div class="options-grid" id="optgrid_38">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(38, false, this)"><div class="opt-letter">A</div><div class="opt-text">Wildlife may try to avoid areas where litter is common.</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(38, true, this)"><div class="opt-letter">B</div><div class="opt-text">Animals are often harmed when they confuse trash with edible things or get stuck in it.</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(38, false, this)"><div class="opt-letter">C</div><div class="opt-text">Litter makes it easier for animals to find shelter and places to feed.</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(38, false, this)"><div class="opt-letter">D</div><div class="opt-text">Some animals use trash to build nests and survive harsh weather.</div></button>
+        </div>
+        <div class="explanation-box" id="exp_38">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="translation-bar">💬 <strong>Bước 1 - Dịch câu gốc:</strong> Động vật có thể bị mắc kẹt/vướng vào rác thải hoặc nhầm lẫn rác là thức ăn.</div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> "become entangled in litter" = "get stuck in it" (bị mắc kẹt trong rác); "mistake it for food" = "confuse trash with edible things" (nhầm lẫn rác với thứ ăn được): <span class="highlight-target">Đáp án B</span>.</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> A, C, D làm sai lệch hoàn toàn ý nghĩa câu gốc.</div>
+        </div>
+      </div>
+
+      <!-- Q39 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 39</span><span class="q-type-pill">INFERENCE</span></div>
+        <div class="q-text">What can be inferred about the government's response to the Quezon City landfill tragedy?</div>
+        <div class="options-grid" id="optgrid_39">
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(39, false, this)"><div class="opt-letter">A</div><div class="opt-text">Authorities took immediate action after the incident in 2000 to close the landfill.</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(39, false, this)"><div class="opt-letter">B</div><div class="opt-text">The court did not hold anyone accountable due to lack of evidence.</div></button>
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(39, true, this)"><div class="opt-letter">C</div><div class="opt-text">It took two decades before the victims received legal recognition and compensation.</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(39, false, this)"><div class="opt-letter">D</div><div class="opt-text">Officials increased funding for landfill safety inspections immediately after the landslide.</div></button>
+        </div>
+        <div class="explanation-box" id="exp_39">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> Đoạn 3 nêu thảm kịch sạt lở xảy ra vào <strong>năm 2000</strong> ("In 2000..."), nhưng phải đến tận <strong>năm 2020</strong> ("But it wasn't until 2020 that a court ruled the accident was the result of government negligence and awarded settlements to the victims' families") tòa án mới phán quyết và bồi thường. Khoảng thời gian từ 2000 đến 2020 chính là <strong>20 năm = 2 thập kỷ (two decades)</strong>: <span class="highlight-target">Đáp án C</span>.</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> A và D sai từ "immediate/immediately"; B trái ngược với phán quyết bồi thường năm 2020.</div>
+        </div>
+      </div>
+
+      <!-- Q40 -->
+      <div class="question-card">
+        <div class="q-header"><span class="q-number-pill">Question 40</span><span class="q-type-pill">MAIN SUMMARY</span></div>
+        <div class="q-text">Which of the following best summarizes the main idea of the passage?</div>
+        <div class="options-grid" id="optgrid_40">
+          <button class="option-btn" data-correct="true" onclick="chooseAnswer(40, true, this)"><div class="opt-letter">A</div><div class="opt-text">Land pollution seriously affects both wildlife and humans, especially in vulnerable communities, and often leads to serious health, environmental, and safety consequences.</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(40, false, this)"><div class="opt-letter">B</div><div class="opt-text">Burning and dumping toxic waste is the main reason why people living in cities face health issues and legal conflicts.</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(40, false, this)"><div class="opt-letter">C</div><div class="opt-text">Land pollution has very few direct effects on animals, but it can be deadly for poor people living near landfills.</div></button>
+          <button class="option-btn" data-correct="false" onclick="chooseAnswer(40, false, this)"><div class="opt-letter">D</div><div class="opt-text">Countries should encourage people to recycle more to reduce the amount of trash in landfills and improve urban beauty.</div></button>
+        </div>
+        <div class="explanation-box" id="exp_40">
+          <div class="exp-title">⚡ GIẢI THÍCH CHI TIẾT</div>
+          <div class="why-correct-box"><strong>Bước 3 - ✅ TẠI SAO ĐÚNG?</strong> Tóm lược trọn vẹn cả 4 đoạn của bài đọc: Ô nhiễm đất ảnh hưởng nghiêm trọng đến cả động vật hoang dã (đoạn 1) và con người, gây hậu quả về sức khỏe/môi trường (đoạn 2), an toàn tính mạng (đoạn 3), đặc biệt là ở các cộng đồng nghèo dễ bị tổn thương (đoạn 4): <span class="highlight-target">Đáp án A</span>.</div>
+          <div class="why-wrong-box"><strong>Bước 4 - ❌ TẠI SAO SAI?</strong> B quá hẹp (chỉ nói đoạn 2); C sai ở vế "very few direct effects on animals"; D không phải nội dung của bài.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="submit-bar">
+      <button class="btn-submit" onclick="submitTest()">
+        <span>🚀</span> NỘP BÀI & XEM ĐÁNH GIÁ TỔNG KẾT
+      </button>
+    </div>
+
+    <!-- BANNER TUYỂN SINH CẬP NHẬT CHUẨN XÁC THEO YÊU CẦU CỦA CÔ LÊ HẰNG -->
+    <div class="promo-banner">
+      <div class="promo-title">
+        PH HS đăng kí học tiếng anh Khối 1 đến 12, IELTS vui lòng liên hệ Ms Lê Hằng English - zalo 0584 965 348 - Online + Offline tại Linh Đàm
+      </div>
+      <div>
+        <div class="promo-phone-pill">
+          <span>📲</span> Zalo: 0584 965 348 (Ms Lê Hằng English)
+        </div>
+      </div>
+      <div class="promo-sub">
+        ✨ Hình thức học: Online + Offline tại Linh Đàm · Luyện thi chuyên sâu Khối 1 → 12 & IELTS hiệu quả cao!
+      </div>
+    </div>
+
+  </div>
+
+  <div id="resultModal" class="modal-overlay">
+    <div class="modal-card">
+      <div style="font-size: 56px; margin-bottom: 10px;" id="modalEmoji">🎉</div>
+      <h2 style="font-size: 26px; font-weight: 900; color: #2D3436; margin-bottom: 6px;">KẾT QUẢ ĐỀ THI THỬ UNIT 2 - TEST 01</h2>
+      <div class="modal-score" id="modalScoreText">0 / 40</div>
+      <div id="modalPercent" style="font-size: 16px; font-weight: 800; color: #636E72;">(0%)</div>
+      <div class="modal-feedback" id="modalTeacherNote"></div>
+      <button class="btn-retry" onclick="restartTest()">🔄 Làm lại bài từ đầu (Đảo đáp án mới)</button>
+    </div>
+  </div>
+
+  <script>
+    let answeredQuestions = {};
+    let totalQuestions = 40;
+
+    function shuffleAllOptions() {
+      const letters = ['A', 'B', 'C', 'D'];
+      document.querySelectorAll('.options-grid').forEach(grid => {
+        const buttons = Array.from(grid.children);
+        for (let i = buttons.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          grid.appendChild(buttons[j]);
+          buttons.splice(j, 1);
+        }
+        Array.from(grid.children).forEach((btn, idx) => {
+          const letterEl = btn.querySelector('.opt-letter');
+          if (letterEl && letters[idx]) {
+            letterEl.innerText = letters[idx];
+          }
+        });
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', shuffleAllOptions);
+
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function initAudio() {
+      if (!audioCtx) audioCtx = new AudioContext();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+    }
+
+    function playCorrectSound() {
+      initAudio();
+      [523.25, 659.25, 783.99, 1046.50].forEach((freq, index) => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime + index * 0.08);
+        gain.gain.setValueAtTime(0.18, audioCtx.currentTime + index * 0.08);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + index * 0.08 + 0.35);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(audioCtx.currentTime + index * 0.08);
+        osc.stop(audioCtx.currentTime + index * 0.08 + 0.36);
+      });
+    }
+
+    function playWrongSound() {
+      initAudio();
+      [329.63, 293.66, 220.00].forEach((freq, index) => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = "triangle";
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime + index * 0.12);
+        gain.gain.setValueAtTime(0.2, audioCtx.currentTime + index * 0.12);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + index * 0.12 + 0.28);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(audioCtx.currentTime + index * 0.12);
+        osc.stop(audioCtx.currentTime + index * 0.12 + 0.3);
+      });
+    }
+
+    const canvas = document.getElementById('confetti-canvas');
+    const ctx = canvas.getContext('2d');
+    let confettiParticles = [];
+
+    function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function triggerConfetti() {
+      confettiParticles = [];
+      const colors = ['#FF4757', '#FDCB6E', '#00C9A7', '#8854C0', '#0984E3', '#00D26A'];
+      for (let i = 0; i < 65; i++) {
+        confettiParticles.push({
+          x: window.innerWidth / 2 + (Math.random() - 0.5) * 200,
+          y: window.innerHeight / 2 - 100,
+          w: Math.random() * 10 + 6,
+          h: Math.random() * 8 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          vx: (Math.random() - 0.5) * 14,
+          vy: Math.random() * -12 - 4,
+          gravity: 0.45,
+          rotation: Math.random() * 360,
+          rotationSpeed: (Math.random() - 0.5) * 12,
+          opacity: 1
+        });
+      }
+      animateConfetti();
+    }
+
+    let confettiAnimId = null;
+    function animateConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      let alive = false;
+      confettiParticles.forEach(p => {
+        p.x += p.vx; p.y += p.vy; p.vy += p.gravity; p.rotation += p.rotationSpeed; p.opacity -= 0.012;
+        if (p.opacity > 0) {
+          alive = true;
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.rotation * Math.PI) / 180);
+          ctx.fillStyle = p.color;
+          ctx.globalAlpha = p.opacity;
+          ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+          ctx.restore();
+        }
+      });
+      if (alive) confettiAnimId = requestAnimationFrame(animateConfetti);
+      else ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function chooseAnswer(qid, isCorrect, btn) {
+      if (answeredQuestions[qid]) return;
+      answeredQuestions[qid] = { isCorrect: isCorrect };
+
+      const grid = document.getElementById('optgrid_' + qid);
+
+      if (isCorrect) {
+        btn.classList.add('correct');
+        playCorrectSound();
+        triggerConfetti();
+      } else {
+        btn.classList.add('wrong');
+        playWrongSound();
+        const correctBtn = grid.querySelector('.option-btn[data-correct="true"]');
+        if (correctBtn) {
+          correctBtn.classList.add('highlight-correct-answer');
+        }
+      }
+
+      grid.querySelectorAll('.option-btn').forEach(b => b.classList.add('disabled'));
+
+      const expBox = document.getElementById('exp_' + qid);
+      if (expBox) expBox.style.display = 'block';
+
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const keys = Object.keys(answeredQuestions);
+      const answeredCount = keys.length;
+      const correctCount = keys.filter(k => answeredQuestions[k].isCorrect).length;
+
+      document.getElementById('starCounter').innerText = correctCount;
+      document.getElementById('correctCounter').innerText = correctCount;
+      document.getElementById('progressBarFill').style.width = ((answeredCount / totalQuestions) * 100) + '%';
+    }
+
+    function submitTest() {
+      const keys = Object.keys(answeredQuestions);
+      const correctCount = keys.filter(k => answeredQuestions[k].isCorrect).length;
+      const percentage = Math.round((correctCount / totalQuestions) * 100);
+
+      document.getElementById('modalScoreText').innerText = correctCount + ' / ' + totalQuestions + ' CÂU ĐÚNG';
+      document.getElementById('modalPercent').innerText = '(' + percentage + '%)';
+
+      let teacherNote = "";
+      let emoji = "🎉";
+
+      if (percentage < 50) {
+        emoji = "💪";
+        teacherNote = "“Điểm lần này chưa cao lắm, con cố gắng đọc kỹ giải thích đáp án và làm lại nha. Cô tin con sẽ làm tốt hơn ở lần sau!”<br><br>— <strong>Ms Lê Hằng English</strong>";
+      } else if (percentage >= 50 && percentage <= 80) {
+        emoji = "🌟";
+        teacherNote = "“Con đã có tiến bộ khá ổn rồi, con cố gắng đọc kỹ giải thích đáp án và làm lại nha. Cô tin con sẽ làm tốt hơn ở lần sau!”<br><br>— <strong>Ms Lê Hằng English</strong>";
+      } else {
+        emoji = "🏆";
+        teacherNote = "“Làm tốt lắm, con cố gắng ring điểm 10 ở lần sau nha!”<br><br>— <strong>Ms Lê Hằng English</strong>";
+      }
+
+      document.getElementById('modalEmoji').innerText = emoji;
+      document.getElementById('modalTeacherNote').innerHTML = teacherNote;
+      document.getElementById('resultModal').style.display = 'flex';
+    }
+
+    function restartTest() {
+      answeredQuestions = {};
+      document.getElementById('resultModal').style.display = 'none';
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.classList.remove('correct', 'wrong', 'disabled', 'highlight-correct-answer');
+      });
+      document.querySelectorAll('.explanation-box').forEach(box => {
+        box.style.display = 'none';
+      });
+      shuffleAllOptions();
+      updateProgress();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
